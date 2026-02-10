@@ -194,9 +194,17 @@ function initContactForm() {
             return;
         }
         
+        // Sanitize form data to prevent email injection
+        const sanitizedData = {
+            name: formData.name.replace(/[\r\n]/g, ' '),
+            email: formData.email.replace(/[\r\n]/g, ' '),
+            subject: formData.subject.replace(/[\r\n]/g, ' '),
+            message: formData.message.replace(/[\r\n]/g, ' ')
+        };
+        
         // Create mailto link
-        const mailto = `mailto:Me@ShaunRoselt.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-            `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        const mailto = `mailto:Me@ShaunRoselt.com?subject=${encodeURIComponent(sanitizedData.subject)}&body=${encodeURIComponent(
+            `Name: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\n\nMessage:\n${sanitizedData.message}`
         )}`;
         
         // Open mailto link
