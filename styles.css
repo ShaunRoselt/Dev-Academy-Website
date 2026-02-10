@@ -2,7 +2,7 @@
 
 /* Root Variables */
 :root {
-    --primary-color: #0d6efd;
+    --primary-color: #001f3f; /* Navy Blue */
     --secondary-color: #6c757d;
     --success-color: #198754;
     --info-color: #0dcaf0;
@@ -62,7 +62,7 @@ body {
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
     color: white;
     display: flex;
     align-items: center;
@@ -276,7 +276,7 @@ footer a:hover {
 }
 
 .scroll-to-top:hover {
-    background-color: #0a58ca;
+    background-color: #001529;
     transform: translateY(-5px);
 }
 
