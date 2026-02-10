@@ -42,7 +42,7 @@ body {
 }
 
 .navbar-brand i {
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .nav-link {
@@ -356,4 +356,26 @@ section {
     background-color: #f8d7da;
     border: 1px solid #f5c2c7;
     color: #842029;
+}
+
+/* Footer Styles */
+footer a {
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #0dcaf0 !important;
+    transform: translateY(-2px);
+}
+
+footer .social-links a:hover {
+    color: #0dcaf0 !important;
+    transform: scale(1.2);
+}
+
+/* Course Logo Images */
+.course-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
