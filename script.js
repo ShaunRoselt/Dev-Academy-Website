@@ -140,7 +140,13 @@ function initCounterAnimation() {
                 counter.textContent = Math.ceil(current);
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.textContent = target;
+                // Special formatting for large numbers
+                if (target >= 10000) {
+                    const thousands = Math.floor(target / 1000);
+                    counter.textContent = thousands + 'k+';
+                } else {
+                    counter.textContent = target;
+                }
             }
         };
         
@@ -188,8 +194,21 @@ function initContactForm() {
             return;
         }
         
-        // Simulate form submission (in production, this would send to a server)
-        submitForm(formData);
+        // Create mailto link
+        const mailto = `mailto:Me@ShaunRoselt.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+            `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+        
+        // Open mailto link
+        window.location.href = mailto;
+        
+        // Show success message
+        showMessage('Opening your email client...', 'success');
+        
+        // Reset form after a short delay
+        setTimeout(() => {
+            form.reset();
+        }, 1000);
     });
 }
 
@@ -207,27 +226,6 @@ function validateForm(data) {
     }
     
     return true;
-}
-
-// Submit form (simulated)
-function submitForm(data) {
-    const form = document.getElementById('contactForm');
-    const submitButton = form.querySelector('button[type="submit"]');
-    
-    // Disable form during submission
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending...';
-    
-    // Simulate API call
-    setTimeout(() => {
-        // Success
-        showMessage('Thank you for your message! We will get back to you soon.', 'success');
-        form.reset();
-        
-        // Re-enable button
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
-    }, 1500);
 }
 
 // Show message to user
